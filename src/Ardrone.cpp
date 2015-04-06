@@ -10,19 +10,76 @@
 
 #include "Ardrone.h"
 
+#include <sstream>
+
 namespace ardronepp{
 	//---------------------------------------------------------------------------------------------------------------------
-	Ardrone::Ardrone() : mControlSocket("192.168.1.1", 5556) {
+	Ardrone::Ardrone() : mControlSocket("192.168.1.1", 5556), mCommandCounter(1) {
 		
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::takeOff(){
-		mControlSocket.send("AT*REF=101,290718208\r");
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ",290718208\r";
+		
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::land(){
-		mControlSocket.send("AT*REF=102,290717696\r");
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ",290717696\r";
+
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
 	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Ardrone::hovering(){
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ",1,0,0,0,0\r";
+
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Ardrone::spin(float _yawSpeed){
+		int yawSpeed;
+		memcpy(&yawSpeed, &_yawSpeed, sizeof(float));
+		
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ", 1, 0, 0, 0, " << yawSpeed << "\r";
+
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Ardrone::lift(float _vSpeed){
+		int vSpeed;
+		memcpy(&vSpeed, &_vSpeed, sizeof(float));
+
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ",1,0,0," << vSpeed << ",0\r";
+
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Ardrone::translate(float _pitch, float _roll){
+		int pitch, roll;
+		memcpy(&pitch, &_pitch, sizeof(float));
+		memcpy(&roll, &_roll, sizeof(float));
+
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter << ",1," << pitch << "," << roll << ",0,0\r";
+
+		mControlSocket.send(ATstream.str().c_str());
+		mCommandCounter++;
+	}
+
 }	//	namespace ardronepp

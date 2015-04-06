@@ -19,8 +19,14 @@ namespace ardronepp{
 
 		void takeOff();
 		void land();
+		void hovering();
+		void spin(float _yawSpeed);
+		void lift(float _vSpeed);
+		void translate(float _pitch, float _roll);
+
 	private:
 		UdpSocket mControlSocket;
+		unsigned mCommandCounter;
 	};	//	class Ardrone
 
 }	//	namespace ardronepp

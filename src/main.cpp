@@ -10,6 +10,7 @@
 
 #include "Ardrone.h"
 #include "core/time/Time.h"
+#include <cstdint>
 
 int main(int _argc, char **_argv){
 	_argc;
@@ -18,9 +19,14 @@ int main(int _argc, char **_argv){
 	ardronepp::Ardrone drone;
 	
 	drone.takeOff();
-	ardronepp::STime::get()->delay(1);
+
+	system("PAUSE"); 
+
+	drone.spin(0.1f);
+
+	system("PAUSE");
 	drone.land();
 	
-	system("PAUSE");
+	system("PAUSE"); 
 
 }
