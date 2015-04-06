@@ -8,7 +8,7 @@
 // Main to test library
 
 
-#include "UdpSocket.h"
+#include "core/comm/UdpSocket.h"
 
 int main(int _argc, char **_argv){
 	_argc;
