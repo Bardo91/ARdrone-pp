@@ -33,6 +33,9 @@
     <ClCompile Include="src\core\time\Time.cpp">
       <Filter>Source Files\core\time</Filter>
     </ClCompile>
+    <ClCompile Include="src\Ardrone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\time\Time.h">
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="src\core\comm\UdpSocket.h">
       <Filter>Source Files\core\comm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ardrone.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
