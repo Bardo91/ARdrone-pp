@@ -10,23 +10,19 @@
 
 #include "Ardrone.h"
 #include "core/time/Time.h"
-#include <cstdint>
 
 int main(int _argc, char **_argv){
 	_argc;
 	_argv;
 
 	ardronepp::Ardrone drone;
-	
+	system("PAUSE");
+	drone.setGroundReference();
 	drone.takeOff();
-
 	system("PAUSE"); 
-
 	drone.spin(0.1f);
-
 	system("PAUSE");
 	drone.land();
-	
 	system("PAUSE"); 
 
 }

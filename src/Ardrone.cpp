@@ -19,30 +19,36 @@ namespace ardronepp{
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
+	void Ardrone::setGroundReference(){
+		// assert(not flying);
+		std::stringstream ATstream;
+		ATstream << "AT*FTRIM=" << mCommandCounter++ << "\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::takeOff(){
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ",290718208\r";
+		ATstream << "AT*REF=" << mCommandCounter++ << ",290718208\r";
 		
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::land(){
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ",290717696\r";
+		ATstream << "AT*REF=" << mCommandCounter++ << ",290717696\r";
 
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::hovering(){
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ",1,0,0,0,0\r";
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0,0,0\r";
 
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -51,10 +57,9 @@ namespace ardronepp{
 		memcpy(&yawSpeed, &_yawSpeed, sizeof(float));
 		
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ", 1, 0, 0, 0, " << yawSpeed << "\r";
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0,0," << yawSpeed << "\r";
 
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -63,10 +68,9 @@ namespace ardronepp{
 		memcpy(&vSpeed, &_vSpeed, sizeof(float));
 
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ",1,0,0," << vSpeed << ",0\r";
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0," << vSpeed << ",0\r";
 
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -76,10 +80,9 @@ namespace ardronepp{
 		memcpy(&roll, &_roll, sizeof(float));
 
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter << ",1," << pitch << "," << roll << ",0,0\r";
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1," << pitch << "," << roll << ",0,0\r";
 
-		mControlSocket.send(ATstream.str().c_str());
-		mCommandCounter++;
+		mControlSocket.send(ATstream.str());
 	}
 
 }	//	namespace ardronepp

@@ -17,6 +17,8 @@ namespace ardronepp{
 	public:
 		Ardrone();
 
+		void setGroundReference();
+
 		void takeOff();
 		void land();
 		void hovering();
