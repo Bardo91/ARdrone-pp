@@ -8,9 +8,20 @@
 // Main to test library
 
 
+#include "UdpSocket.h"
 
 int main(int _argc, char **_argv){
 	_argc;
 	_argv;
+
+	ardronepp::UdpSocket control("192.168.1.1", 5556);
+
+
+	control.send("AT*REF=101,290718208\r");
+	control.send("AT*REF=102,290717696\r");
+
+
+
+	system("PAUSE");
 
 }
