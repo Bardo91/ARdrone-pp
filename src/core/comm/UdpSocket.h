@@ -21,6 +21,17 @@
 	#pragma comment (lib, "Ws2_32.lib")
 	#pragma comment (lib, "Mswsock.lib")
 	#pragma comment (lib, "AdvApi32.lib")
+#elif defined(__linux__)
+	#include <unistd.h>
+	#include <sys/types.h>
+	#include <sys/socket.h>
+	#include <netdb.h>
+
+	typedef int SOCKET;
+	const int INVALID_SOCKET = -1;
+	const int SOCKET_ERROR = -1;
+
+	#define closesocket(SOCKET) close(SOCKET)
 #endif
 
 #include <string>
