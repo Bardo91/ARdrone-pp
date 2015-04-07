@@ -9,7 +9,7 @@
 
 #ifndef ARDRONEPP_ARDRONE_H_
 
-#include "core/comm/UdpSocket.h"
+#include "../core/comm/UdpSocket.h"
 
 namespace ardronepp{
 
@@ -27,7 +27,7 @@ namespace ardronepp{
 		void translate(float _pitch, float _roll);
 
 	private:
-		UdpSocket mControlSocket;
+		UdpSocket mControlSocket, mNavDataSocket;
 		unsigned mCommandCounter;
 	};	//	class Ardrone
 

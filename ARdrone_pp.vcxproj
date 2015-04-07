@@ -65,15 +65,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Ardrone.cpp" />
     <ClCompile Include="src\core\comm\UdpSocket.cpp" />
     <ClCompile Include="src\core\time\Time.cpp" />
+    <ClCompile Include="src\drone\Ardrone.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\comm\UdpSocket.h" />
     <ClInclude Include="src\core\time\Time.h" />
-    <ClInclude Include="src\Ardrone.h" />
+    <ClInclude Include="src\drone\Ardrone.h" />
+    <ClInclude Include="src\drone\navigation\NavigationData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,7 +8,7 @@
 // Main to test library
 
 
-#include "Ardrone.h"
+#include "drone/Ardrone.h"
 #include "core/time/Time.h"
 
 int main(int _argc, char **_argv){

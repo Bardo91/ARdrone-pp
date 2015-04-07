@@ -22,6 +22,12 @@
     <Filter Include="Source Files\core\time">
       <UniqueIdentifier>{408cbc10-7b77-4741-aea7-2d99c5e5c789}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\drone">
+      <UniqueIdentifier>{4d1f9ef1-a0d4-490e-abdd-0e3f2cb3b938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\drone\navigation">
+      <UniqueIdentifier>{e1ab604e-87e7-4909-8ca8-d70bf8eef2ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -33,8 +39,8 @@
     <ClCompile Include="src\core\time\Time.cpp">
       <Filter>Source Files\core\time</Filter>
     </ClCompile>
-    <ClCompile Include="src\Ardrone.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\drone\Ardrone.cpp">
+      <Filter>Source Files\drone</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,8 +50,11 @@
     <ClInclude Include="src\core\comm\UdpSocket.h">
       <Filter>Source Files\core\comm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Ardrone.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\drone\Ardrone.h">
+      <Filter>Source Files\drone</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drone\navigation\NavigationData.h">
+      <Filter>Source Files\drone\navigation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

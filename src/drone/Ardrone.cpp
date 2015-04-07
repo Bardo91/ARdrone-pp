@@ -14,7 +14,7 @@
 
 namespace ardronepp{
 	//---------------------------------------------------------------------------------------------------------------------
-	Ardrone::Ardrone() : mControlSocket("192.168.1.1", 5556), mCommandCounter(1) {
+	Ardrone::Ardrone() : mControlSocket("192.168.1.1", 5556), mNavDataSocket("192.168.1.1", 5554), mCommandCounter(1) {
 		
 	}
 
