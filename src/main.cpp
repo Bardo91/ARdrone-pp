@@ -19,8 +19,12 @@ int main(int _argc, char **_argv){
 	system("PAUSE");
 	drone.setGroundReference();
 	drone.takeOff();
+	drone.hovering();
 	system("PAUSE"); 
-	drone.spin(0.1f);
+	double t0 = ardronepp::STime::get()->getTime();
+	while (ardronepp::STime::get()->getTime() - t0 < 2){
+		drone.translate(0.5f,0.0f);
+	}
 	system("PAUSE");
 	drone.land();
 	system("PAUSE"); 
