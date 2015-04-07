@@ -17,7 +17,7 @@ using namespace std;
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	// Public interface
-	Telemetry::Telemetry(): mTelemetrySocket("192.168.1.1", 5554) {
+	Telemetry::Telemetry(): mTelemetrySocket("192.168.1.1", 5554), mAcquisitionThread(&Telemetry::acquisitionCallback, this) {
 
 	}
 

@@ -10,6 +10,7 @@
 #ifndef ARDRONEPP_ARDRONE_H_
 
 #include "../core/comm/UdpSocket.h"
+#include "navigation/Telemetry.h"
 
 namespace ardronepp{
 
@@ -29,6 +30,9 @@ namespace ardronepp{
 	private:
 		UdpSocket mControlSocket, mNavDataSocket;
 		unsigned mCommandCounter;
+
+		Telemetry mTelemeter;
+		
 	};	//	class Ardrone
 
 }	//	namespace ardronepp

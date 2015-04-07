@@ -23,7 +23,7 @@ int main(int _argc, char **_argv){
 	system("PAUSE"); 
 	double t0 = ardronepp::STime::get()->getTime();
 	while (ardronepp::STime::get()->getTime() - t0 < 2){
-		drone.translate(0.5f,0.0f);
+		drone.spin(0.5f);
 	}
 	system("PAUSE");
 	drone.land();
