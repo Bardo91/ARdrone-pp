@@ -32,6 +32,7 @@ namespace ardronepp{
 	public:
 		double	getTime		();
 		void	delay		(const unsigned _seconds);
+		void	mDelay		(const unsigned _millis);
 
 	private:
 		STime();

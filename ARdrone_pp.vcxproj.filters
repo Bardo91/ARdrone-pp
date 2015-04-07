@@ -42,6 +42,9 @@
     <ClCompile Include="src\drone\Ardrone.cpp">
       <Filter>Source Files\drone</Filter>
     </ClCompile>
+    <ClCompile Include="src\drone\navigation\Telemetry.cpp">
+      <Filter>Source Files\drone\navigation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\time\Time.h">
@@ -54,6 +57,9 @@
       <Filter>Source Files\drone</Filter>
     </ClInclude>
     <ClInclude Include="src\drone\navigation\NavigationData.h">
+      <Filter>Source Files\drone\navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drone\navigation\Telemetry.h">
       <Filter>Source Files\drone\navigation</Filter>
     </ClInclude>
   </ItemGroup>

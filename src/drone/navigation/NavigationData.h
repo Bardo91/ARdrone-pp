@@ -40,13 +40,10 @@ namespace ardronepp{
 			float m31, m32, m33;
 		};
 
-		union Position {
-			float v[3];
-			struct {
-				float x;
-				float y;
-				float z;
-			};
+		struct Position{
+			float x;
+			float y;
+			float z;
 		};
 
 		struct TimeStamp {

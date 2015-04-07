@@ -68,6 +68,7 @@
     <ClCompile Include="src\core\comm\UdpSocket.cpp" />
     <ClCompile Include="src\core\time\Time.cpp" />
     <ClCompile Include="src\drone\Ardrone.cpp" />
+    <ClCompile Include="src\drone\navigation\Telemetry.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +76,7 @@
     <ClInclude Include="src\core\time\Time.h" />
     <ClInclude Include="src\drone\Ardrone.h" />
     <ClInclude Include="src\drone\navigation\NavigationData.h" />
+    <ClInclude Include="src\drone\navigation\Telemetry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

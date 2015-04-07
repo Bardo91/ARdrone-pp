@@ -72,5 +72,13 @@ namespace ardronepp{
 			//	 Intentionally blank
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------------------------
+	void STime::mDelay(const unsigned _millis){
+		double t0 = getTime();
+		while (getTime() - t0 < _millis){
+			//	 Intentionally blank
+		}
+	}
 
 }	//	namespace ardronepp

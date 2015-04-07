@@ -12,14 +12,33 @@
 #define ARDRONEPP_DRONE_NAVIGATION_TELEMETRY_H_
 
 #include "NavigationData.h"
+#include "../../core/comm/UdpSocket.h"
+
+#include <array>
+#include <mutex>
+#include <string>
+#include <thread>
 
 namespace ardronepp{
 	class Telemetry{
-	public:
+	public:		// Public interface
+		Telemetry();
+
+		std::array<std::array<float, 3>, 3>		orientation();
+		std::array<float, 3>					position();
+		std::array<float, 3>					speed();
+
+	private:	// Private methods
+		void acquisitionCallback();
+		void update();
+
+	private:	// Private members
+		UdpSocket					mTelemetrySocket;
+		std::thread					mAcquisitionThread;
+		std::mutex					mSecureAcquisition;
 
 
-
-	private:
+		//	ARdrone telemetry
 		unsigned int				mMsgHeader;
 		unsigned int				mState;
 		unsigned int				mSequenceNumber;
