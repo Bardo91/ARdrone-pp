@@ -23,6 +23,7 @@ namespace ardronepp{
 	class Telemetry{
 	public:		// Public interface
 		Telemetry();
+		~Telemetry();
 
 		std::array<std::array<float, 3>, 3>		orientation();
 		std::array<float, 3>					position();
@@ -36,7 +37,7 @@ namespace ardronepp{
 		UdpSocket					mTelemetrySocket;
 		std::thread					mAcquisitionThread;
 		std::mutex					mSecureAcquisition;
-
+		bool						mAcquire = true;
 
 		//	ARdrone telemetry
 		unsigned int				mMsgHeader;

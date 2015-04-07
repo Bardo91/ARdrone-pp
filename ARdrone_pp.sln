@@ -5,6 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ARdrone_pp", "ARdrone_pp.vcxproj", "{5E0413F8-989B-4FBF-BA97-41887862A033}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test.vcxproj", "{24AAE213-C7C7-4399-9C0F-24529AB137DA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E0413F8-989B-4FBF-BA97-41887862A033} = {5E0413F8-989B-4FBF-BA97-41887862A033}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +20,10 @@ Global
 		{5E0413F8-989B-4FBF-BA97-41887862A033}.Debug|Win32.Build.0 = Debug|Win32
 		{5E0413F8-989B-4FBF-BA97-41887862A033}.Release|Win32.ActiveCfg = Release|Win32
 		{5E0413F8-989B-4FBF-BA97-41887862A033}.Release|Win32.Build.0 = Release|Win32
+		{24AAE213-C7C7-4399-9C0F-24529AB137DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24AAE213-C7C7-4399-9C0F-24529AB137DA}.Debug|Win32.Build.0 = Debug|Win32
+		{24AAE213-C7C7-4399-9C0F-24529AB137DA}.Release|Win32.ActiveCfg = Release|Win32
+		{24AAE213-C7C7-4399-9C0F-24529AB137DA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

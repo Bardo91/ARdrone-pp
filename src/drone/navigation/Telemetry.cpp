@@ -20,7 +20,13 @@ namespace ardronepp{
 	Telemetry::Telemetry(): mTelemetrySocket("192.168.1.1", 5554), mAcquisitionThread(&Telemetry::acquisitionCallback, this) {
 
 	}
-
+	
+	//-----------------------------------------------------------------------------------------------------------------
+	Telemetry::~Telemetry(){
+		mAcquire = false;
+		if (mAcquisitionThread.joinable())
+			mAcquisitionThread.join();	
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 	array<array<float, 3>, 3> Telemetry::orientation(){
 		lock_guard<mutex> lock(mSecureAcquisition);
@@ -46,7 +52,7 @@ namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	// Private methods
 	void Telemetry::acquisitionCallback(){
-		for (;;){
+		while(mAcquire){
 			update();
 			STime::get()->delay(100);
 		}
