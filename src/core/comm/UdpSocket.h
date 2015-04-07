@@ -26,7 +26,8 @@
 	#include <sys/types.h>
 	#include <sys/socket.h>
 	#include <netdb.h>
-
+	#include <arpa/inet.h>
+	
 	typedef int SOCKET;
 	const int INVALID_SOCKET = -1;
 	const int SOCKET_ERROR = -1;

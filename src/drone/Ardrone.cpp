@@ -10,6 +10,7 @@
 
 #include "Ardrone.h"
 
+#include <cstring>
 #include <sstream>
 
 namespace ardronepp{

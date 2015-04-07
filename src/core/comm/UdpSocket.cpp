@@ -9,6 +9,7 @@
 
 #include "UdpSocket.h"
 #include <cassert>
+#include <cstring>
 
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
@@ -41,7 +42,11 @@ namespace ardronepp{
 		// Configure erver addres
 		mDroneAddr.sin_family = AF_INET;
 		mDroneAddr.sin_port = htons((u_short)_port);
-		mDroneAddr.sin_addr.s_addr = inet_addr(_droneIp.c_str());
+		#if defined(_WIN32)
+			mDroneAddr.sin_addr.s_addr = inet_addr(_droneIp.c_str());
+		#elif defined (__linux__)
+			inet_aton(_droneIp.c_str(), &mDroneAddr.sin_addr);
+		#endif
 
 		// Configure client addres
 		mClientAddr.sin_family = AF_INET;
@@ -53,12 +58,8 @@ namespace ardronepp{
 	int UdpSocket::send(const std::string &_msg){
 		assert(mSocket != INVALID_SOCKET);
 
-		int n;
-		#if defined(_WIN32)	
-			n = sendto(mSocket, _msg.c_str(), _msg.size(), 0, (sockaddr*)&mDroneAddr, sizeof(mDroneAddr));
-		#elif defined(__linux__)
-			n = recvfrom(mSocket, (void *)recvbuf, recvbuflen, 0, mHints.ai_addr, &mHints.ai_addrlen);
-		#endif
+		int n = sendto(mSocket, _msg.c_str(), _msg.size(), 0, (sockaddr*)&mDroneAddr, sizeof(mDroneAddr));
+		
 
 		return n < 1 ? 0 : n;
 	}
