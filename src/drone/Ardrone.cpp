@@ -76,12 +76,14 @@ namespace ardronepp{
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::translate(float _pitch, float _roll){
+		_pitch = -_pitch;	// Negative value get nose down, so move forward.
+
 		int pitch, roll;
 		memcpy(&pitch, &_pitch, sizeof(float));
 		memcpy(&roll, &_roll, sizeof(float));
 
 		std::stringstream ATstream;
-		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1," << pitch << "," << roll << ",0,0\r";
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1," << roll << "," << pitch << ",0,0\r";
 
 		mControlSocket.send(ATstream.str());
 	}
