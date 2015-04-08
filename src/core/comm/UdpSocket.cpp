@@ -58,14 +58,7 @@ namespace ardronepp{
 	int UdpSocket::send(const std::string &_msg){
 		assert(mSocket != INVALID_SOCKET);
 
-		int flags = 0;
-		#if defined(_WIN32)
-			flags |= WSAEWOULDBLOCK;
-		#elif defined(__linux__)
-			flags |= MSG_DONTWAIT;
-		#endif
-
-		int n = sendto(mSocket, _msg.c_str(), _msg.size(), flags, (sockaddr*)&mDroneAddr, sizeof(mDroneAddr));
+		int n = sendto(mSocket, _msg.c_str(), _msg.size(), 0, (sockaddr*)&mDroneAddr, sizeof(mDroneAddr));
 		
 
 		return n < 1 ? 0 : n;
