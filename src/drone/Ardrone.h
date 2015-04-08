@@ -28,7 +28,7 @@ namespace ardronepp{
 		void translate(float _pitch, float _roll);
 
 	private:
-		UdpSocket mControlSocket, mNavDataSocket;
+		UdpSocket mControlSocket;
 		unsigned mCommandCounter;
 
 		Telemetry mTelemeter;

@@ -33,20 +33,17 @@
     <ClCompile Include="src\core\comm\UdpSocket.cpp">
       <Filter>Source Files\core\comm</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\time\Time.cpp">
-      <Filter>Source Files\core\time</Filter>
-    </ClCompile>
     <ClCompile Include="src\drone\Ardrone.cpp">
       <Filter>Source Files\drone</Filter>
     </ClCompile>
     <ClCompile Include="src\drone\navigation\Telemetry.cpp">
       <Filter>Source Files\drone\navigation</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\time\TimeTools.cpp">
+      <Filter>Source Files\core\time</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\core\time\Time.h">
-      <Filter>Source Files\core\time</Filter>
-    </ClInclude>
     <ClInclude Include="src\core\comm\UdpSocket.h">
       <Filter>Source Files\core\comm</Filter>
     </ClInclude>
@@ -58,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="src\drone\navigation\Telemetry.h">
       <Filter>Source Files\drone\navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\time\TimeTools.h">
+      <Filter>Source Files\core\time</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
