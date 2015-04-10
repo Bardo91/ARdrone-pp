@@ -40,7 +40,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\programming\ARdrone-pp\src;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\programming\ARdrone-pp\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\programming\euroarms\lib\ardronepp\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
