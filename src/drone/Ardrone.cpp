@@ -31,7 +31,7 @@ namespace ardronepp{
 	//---------------------------------------------------------------------------------------------------------------------
 	void Ardrone::takeOff(){
 		std::stringstream ATstream;
-		ATstream << "AT*REF=" << mCommandCounter++ << ",290718208\r";
+		ATstream << "AT*REF=" << mCommandCounter++ << ",290718464\r";
 		
 		mControlSocket.send(ATstream.str());
 	}
