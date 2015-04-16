@@ -27,9 +27,13 @@ namespace ardronepp{
 		void lift(float _vSpeed);					// _vSpeed		= [-1, 1]	ip - down
 		void translate(float _pitch, float _roll);	// _pitch		= [-1, 1]	front - back
 													// _roll		= [-1, 1]	left - right
+	private:
+		void initConnections();
 
 	private:
 		UdpSocket mControlSocket;
+		UdpSocket mTelemetrySocket;
+
 		unsigned mCommandCounter;
 
 		Telemetry mTelemeter;

@@ -10,7 +10,7 @@
 #include "UdpSocket.h"
 #include <cassert>
 #include <cstring>
-
+#include <iostream>
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	UdpSocket::UdpSocket(const std::string &_droneIp, unsigned _port){
@@ -73,8 +73,12 @@ namespace ardronepp{
 
 		sockaddr_in addr;
 		socklen_t len = sizeof(addr);
-		recvfrom(mSocket, buffer, MAX_BUFFER_SIZE, 0, (sockaddr*)&addr, &len);
+		int n = recvfrom(mSocket, buffer, MAX_BUFFER_SIZE, 0, (sockaddr*)&addr, &len);
 		
+		if (n < 1){
+			std::cout << "Socket error: " << WSAGetLastError();
+		}
+
 		std::string msg(buffer);
 
 		return msg;
