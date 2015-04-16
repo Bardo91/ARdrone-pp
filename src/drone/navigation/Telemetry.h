@@ -48,6 +48,7 @@ namespace ardronepp{
 		navdata::TimeStamp			mTimeStamp;
 		navdata::EulerMat			mOrientation;
 		navdata::Position			mPosition;
+		navdata::Altitude			mAltitude;
 		navdata::Speeds				mSpeeds;
 
 		navdata::RawImu				mRawImu;

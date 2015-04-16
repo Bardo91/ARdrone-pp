@@ -14,11 +14,11 @@
 
 namespace ardronepp{
 	namespace navdata{
-		enum ARDRONE_NAVDATA_TAG {
+		enum NAVDATA_TAG {
 			DEMO_TAG = 0, TIME_TAG = 1,
 			RAW_MEASURES_TAG = 2, PHYS_MEASURES_TAG = 3,
 			GYROS_OFFSETS_TAG = 4, EULER_ANGLES_TAG = 5,
-			REFERENCES_TAG = 6, RIMS_TAG = 7,
+			REFERENCES_TAG = 6, TRIMS_TAG = 7,
 			RC_REFERENCES_TAG = 8, PWM_TAG = 9,
 			ALTITUDE_TAG = 10, VISION_RAW_TAG = 11,
 			VISION_OF_TAG = 12, VISION_TAG = 13,
@@ -44,6 +44,21 @@ namespace ardronepp{
 			float x;
 			float y;
 			float z;
+		};
+
+		struct Altitude{
+			unsigned short tag;
+			unsigned short size;
+			int            altitude_vision;
+			float          altitude_vz;
+			int            altitude_ref;
+			int            altitude_raw;
+			float          obs_accZ;
+			float          obs_alt;
+			float			obs_x[3];
+			unsigned int   obs_state;
+			float			est_vb[2];
+			unsigned int   est_state;
 		};
 
 		struct TimeStamp {
