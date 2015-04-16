@@ -76,7 +76,7 @@ namespace ardronepp{
 	//------------------------------------------------------------------------------------------------------------------
 	void STime::mDelay(const unsigned _millis){
 		double t0 = getTime();
-		while (getTime() - t0 < _millis){
+		while ((getTime() - t0)*100 < _millis){
 			//	 Intentionally blank
 		}
 	}
