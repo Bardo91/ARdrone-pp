@@ -68,7 +68,7 @@ namespace ardronepp{
 	std::string UdpSocket::receive(){
 		assert(mSocket != INVALID_SOCKET);
 
-		const unsigned MAX_BUFFER_SIZE = 1024;
+		const unsigned MAX_BUFFER_SIZE = 4096;
 		char buffer[MAX_BUFFER_SIZE];
 
 		sockaddr_in addr;
@@ -79,7 +79,7 @@ namespace ardronepp{
 			std::cout << "Socket error: " << WSAGetLastError();
 		}
 
-		std::string msg(buffer);
+		std::string msg(buffer, n);
 
 		return msg;
 	}

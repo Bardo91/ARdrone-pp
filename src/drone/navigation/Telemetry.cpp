@@ -18,20 +18,21 @@ using namespace ardronepp::navdata;
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	// Public interface
-	Telemetry::Telemetry(UdpSocket *_telemetrySocket, UdpSocket *_controlSocket):	mTelemetrySocket(_telemetrySocket),
+	Telemetry::Telemetry(UdpSocket *_telemetrySocket, UdpSocket *_controlSocket):	/*mTelemetrySocket(_telemetrySocket),*/
+																					mTelemetrySocket("192.168.1.1",5554),
 																					mControlSocket(_controlSocket),
 																					mAcquire(true) {
-		mTelemetrySocket->send("\x01\x00\x00\x00");
+		_telemetrySocket;
+		mTelemetrySocket.send("\x01\x00\x00\x00");
+
 		// AR.Drone 2.0
 		// Disable BOOTSTRAP mode
-		mControlSocket->send("AT*CONFIG_IDS=1,\"d87f7e0c\",\"be27e2e4\",\"d2e081a3\"\r");
-		//sockCommand.sendf("AT*CONFIG=%d,\"general:navdata_demo\",\"TRUE\"\r", ++seq);
 		mControlSocket->send("AT*CONFIG=2,\"general:navdata_demo\",\"FALSE\"\r");
 		STime::get()->mDelay(100);
 
 		// Seed ACK
 		mControlSocket->send("AT*CTRL=3,0\r");
-
+		
 		mAcquisitionThread = new thread(&Telemetry::acquisitionCallback, this);
 		
 	}
@@ -75,9 +76,9 @@ namespace ardronepp{
 
 	//-----------------------------------------------------------------------------------------------------------------
 	void Telemetry::update(){
-		mTelemetrySocket->send("\x01\x00\x00\x00");	// Send request
+		mTelemetrySocket.send("\x01\x00\x00\x00");	// Send request
 
-		std::string buffer = mTelemetrySocket->receive();
+		std::string buffer = mTelemetrySocket.receive();
 
 		int size = buffer.size();
 

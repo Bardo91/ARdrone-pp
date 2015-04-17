@@ -75,5 +75,5 @@ int main(int _argc, char **_argv){
 			}
 			break;
 		}
-	} while (cmd != 0);
+	} while (cmd != 8);
 }

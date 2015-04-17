@@ -35,7 +35,7 @@ namespace ardronepp{
 
 	private:	// Private members
 		UdpSocket					*mControlSocket;
-		UdpSocket					*mTelemetrySocket;
+		UdpSocket					mTelemetrySocket;
 		bool						mAcquire;
 		std::thread					*mAcquisitionThread;
 		std::mutex					mSecureAcquisition;
