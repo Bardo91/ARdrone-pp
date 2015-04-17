@@ -79,7 +79,8 @@ namespace ardronepp{
 			std::cout << "Socket error: " << WSAGetLastError();
 		}
 
-		std::string msg(buffer, n);
+		std::string msg;
+		msg.append(buffer, n);
 
 		return msg;
 	}
