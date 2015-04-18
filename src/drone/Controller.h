@@ -1,0 +1,28 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		ARdrone++: library
+//			Author: Pablo R.S. (A.k.a. Bardo91)
+//			Date:	2015-APR-18
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+
+
+#ifndef ARDRONE_DRONE_CONTROLLER_H_
+#define ARDRONE_DRONE_CONTROLLER_H_
+
+#include "../core/comm/UdpSocket.h"
+
+namespace ardronepp{
+	class Controller{
+	public:
+		Controller();
+
+
+	private:
+		UdpSocket mControlSocket;
+	};
+}	//	namespace ardronepp
+
+
+#endif // ARDRONE_DRONE_CONTROLLER_H_
