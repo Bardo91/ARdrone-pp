@@ -18,7 +18,6 @@ int main(int _argc, char **_argv){
 	_argv;
 	
 	ardronepp::Ardrone drone;
-	drone.setGroundReference();
 	
 	int cmd = 0;
 	do{
@@ -38,40 +37,41 @@ int main(int _argc, char **_argv){
 
 		switch (cmd){
 		case 0:	// Landing
-			drone.land();	
+			drone.control().setGroundReference();
+			drone.control().land();	
 			break;
 		case 1:	// Take off
-			drone.takeOff();
-			drone.hovering();
+			drone.control().takeOff();
+			drone.control().hovering();
 			break;
 		case 2:	// Spin left
 			while (ardronepp::STime::get()->getTime() - t0 < 2){
-				drone.spin(0.1f);
+				drone.control().spin(0.1f);
 			}
 			break;
 		case 3:	// Spin right
 			while (ardronepp::STime::get()->getTime() - t0 < 2){
-				drone.spin(-0.1f);
+				drone.control().spin(-0.1f);
 			}
 			break;
 		case 4:	// Move front
 			while (ardronepp::STime::get()->getTime() - t0 < 1){
-				drone.translate(0.1f, 0.0f);
+				drone.control().translate(0.1f, 0.0f);
 			}
 			break;
 		case 5:	// Move back
 			while (ardronepp::STime::get()->getTime() - t0 < 1){
-				drone.translate(-0.1f, 0.0f);
+				drone.control().translate(-0.1f, 0.0f);
 			}
 			break;
 		case 6:	// Move Right
 			while (ardronepp::STime::get()->getTime() - t0 < 1){
-				drone.translate(0.0f, 0.1f);
+				drone.control().translate(0.0f, 0.1f);
 			}
 			break;
 		case 7:	// Move left
 			while (ardronepp::STime::get()->getTime() - t0 < 1){
-				drone.translate(0.0f, -0.1f);
+				drone.control().translate(0.0f, -0.1f);
 			}
 			break;
 		}

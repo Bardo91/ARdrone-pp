@@ -22,7 +22,7 @@
 namespace ardronepp{
 	class Telemetry{
 	public:		// Public interface
-		Telemetry(UdpSocket *_telemetrySocket, UdpSocket *_controlSocket);
+		Telemetry(UdpSocket *_controlSocket);
 		~Telemetry();
 
 		std::array<std::array<float, 3>, 3>		orientation();

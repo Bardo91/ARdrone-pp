@@ -10,11 +10,79 @@
 
 #include "Controller.h"
 
+#include <cstring>
+#include <sstream>
+
 namespace ardronepp{
-	Controller::Controller(): mControlSocket("192.168.1.1", 5556){
+	Controller::Controller(): mControlSocket("192.168.1.1", 5556){	}
 
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::setGroundReference(){
+		// assert(not flying);
+		std::stringstream ATstream;
+		ATstream << "AT*FTRIM=" << mCommandCounter++ << "\r";
 
+		mControlSocket.send(ATstream.str());
 	}
 
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::takeOff(){
+		std::stringstream ATstream;
+		ATstream << "AT*REF=" << mCommandCounter++ << ",290718464\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::land(){
+		std::stringstream ATstream;
+		ATstream << "AT*REF=" << mCommandCounter++ << ",290717696\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::hovering(){
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0,0,0\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::spin(float _yawSpeed){
+		int yawSpeed;
+		memcpy(&yawSpeed, &_yawSpeed, sizeof(float));
+
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0,0," << yawSpeed << "\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::lift(float _vSpeed){
+		int vSpeed;
+		memcpy(&vSpeed, &_vSpeed, sizeof(float));
+
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1,0,0," << vSpeed << ",0\r";
+
+		mControlSocket.send(ATstream.str());
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::translate(float _pitch, float _roll){
+		_pitch = -_pitch;	// Negative value get nose down, so move forward.
+
+		int pitch, roll;
+		memcpy(&pitch, &_pitch, sizeof(float));
+		memcpy(&roll, &_roll, sizeof(float));
+
+		std::stringstream ATstream;
+		ATstream << "AT*PCMD=" << mCommandCounter++ << ",1," << roll << "," << pitch << ",0,0\r";
+
+		mControlSocket.send(ATstream.str());
+	}
 
 }	//	namespace ardronepp

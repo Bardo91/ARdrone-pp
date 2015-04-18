@@ -11,33 +11,20 @@
 
 #include "../core/comm/UdpSocket.h"
 #include "navigation/Telemetry.h"
+#include "Controller.h"
 
 namespace ardronepp{
 
 	class Ardrone{
 	public:
 		Ardrone();
-
-		void setGroundReference();
-
-		void takeOff();
-		void land();
-		void hovering();
-		void spin(float _yawSpeed);					// _yawSpeed	= [-1, 1]	left - right
-		void lift(float _vSpeed);					// _vSpeed		= [-1, 1]	ip - down
-		void translate(float _pitch, float _roll);	// _pitch		= [-1, 1]	front - back
-													// _roll		= [-1, 1]	left - right
+		Controller & control();
 	private:
 		void initConnections();
 
 	private:
-		UdpSocket mControlSocket;
-		UdpSocket mTelemetrySocket;
-
-		unsigned mCommandCounter;
-
-		Telemetry mTelemeter;
-		
+		Telemetry	mTelemeter;
+		Controller	mController;
 	};	//	class Ardrone
 
 }	//	namespace ardronepp

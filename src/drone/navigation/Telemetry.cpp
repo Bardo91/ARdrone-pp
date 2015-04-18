@@ -18,11 +18,9 @@ using namespace ardronepp::navdata;
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	// Public interface
-	Telemetry::Telemetry(UdpSocket *_telemetrySocket, UdpSocket *_controlSocket):	/*mTelemetrySocket(_telemetrySocket),*/
-																					mTelemetrySocket("192.168.1.1",5554),
-																					mControlSocket(_controlSocket),
-																					mAcquire(true) {
-		_telemetrySocket;
+	Telemetry::Telemetry(UdpSocket *_controlSocket):	mTelemetrySocket("192.168.1.1",5554),
+														mControlSocket(_controlSocket),
+														mAcquire(true) {
 		mTelemetrySocket.send("\x01\x00\x00\x00");
 
 		// AR.Drone 2.0
