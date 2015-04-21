@@ -45,6 +45,9 @@
     <ClCompile Include="src\drone\Controller.cpp">
       <Filter>Source Files\drone</Filter>
     </ClCompile>
+    <ClCompile Include="src\drone\navigation\State.cpp">
+      <Filter>Source Files\drone\navigation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\comm\UdpSocket.h">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="src\drone\Controller.h">
       <Filter>Source Files\drone</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drone\navigation\State.h">
+      <Filter>Source Files\drone\navigation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
