@@ -130,8 +130,8 @@ namespace ardronepp{
 					break;
 				}
 				index += tmp_size;
-			mSecureAcquisition.unlock();
 			}
+			mSecureAcquisition.unlock();
 		}
 
 	}
