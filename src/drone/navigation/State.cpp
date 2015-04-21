@@ -16,26 +16,26 @@ namespace ardronepp{
 	}
 	//---------------------------------------------------------------------------------------------------------------------
 	bool State::flying(){
-		return mState & eStateMask::fly == 0 ? false : true;
+		return (mState & eStateMask::fly) == 0 ? false : true;
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	bool State::eulerAngleControl(){
-		return mState & eStateMask::control == 0 ? true : false;
+		return (mState & eStateMask::control) == 0 ? true : false;
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	bool State::navdataDemo(){
-		return mState & eStateMask::navdataDemo == 0 ? false : true;
+		return (mState & eStateMask::navdataDemo) == 0 ? false : true;
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	bool State::emergencyMode(){
-		return mState & eStateMask::emergecy == 0 ? false : true;
+		return (mState & eStateMask::emergecy) == 0 ? false : true;
 	}
 	//---------------------------------------------------------------------------------------------------------------------
 	bool State::lowBattery(){
-		return mState & eStateMask::vBat == 0 ? false : true;
+		return (mState & eStateMask::vBat) == 0 ? false : true;
 	}
 
 }

@@ -19,6 +19,7 @@ namespace ardronepp{
 	public:
 		Ardrone();
 		Controller & control();
+		Telemetry & telemetry();
 	private:
 		void initConnections();
 

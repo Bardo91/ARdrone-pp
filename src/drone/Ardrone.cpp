@@ -19,4 +19,10 @@ namespace ardronepp{
 	Controller & Ardrone::control(){
 		return mController;
 	}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	Telemetry & Ardrone::telemetry(){
+		return mTelemeter;
+	}
+
 }	//	namespace ardronepp

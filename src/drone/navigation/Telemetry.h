@@ -12,6 +12,7 @@
 #define ARDRONEPP_DRONE_NAVIGATION_TELEMETRY_H_
 
 #include "NavigationData.h"
+#include "State.h"
 #include "../../core/comm/UdpSocket.h"
 
 #include <array>
@@ -29,6 +30,8 @@ namespace ardronepp{
 		std::array<float, 3>					position();
 		std::array<float, 3>					speed();
 
+		State									state();
+
 	private:	// Private methods
 		void acquisitionCallback();
 		void update();
@@ -42,7 +45,7 @@ namespace ardronepp{
 
 		//	ARdrone telemetry
 		unsigned int				mMsgHeader;
-		unsigned int				mState;
+		State						mState;
 		unsigned int				mSequenceNumber;
 
 
