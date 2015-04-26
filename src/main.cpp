@@ -34,7 +34,7 @@ int main(int _argc, char **_argv){
 			std::cout << "\t 6--> Move right: " << std::endl;
 			std::cout << "\t 7--> Move left: " << std::endl;
 			std::cout << "\t 8--> Stop everything: " << std::endl;
-			ardronepp::STime::get()->mDelay(500);
+			ardronepp::STime::get()->mDelay(50);
 			#if defined(_WIN32)
 				system("cls");
 			#elif defined(__linux__)

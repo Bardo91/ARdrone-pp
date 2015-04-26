@@ -44,7 +44,7 @@ namespace ardronepp{
 		UdpSocket(const std::string &_droneIp, unsigned _port);
 
 		int send(const std::string &_msg);
-		std::string receive();
+		int receive(char *_buffer,const unsigned _size);
 
 	private:	// Private methods
 		void configureAddrs(const std::string &_droneIp, unsigned _port);

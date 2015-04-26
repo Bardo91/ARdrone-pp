@@ -65,24 +65,12 @@ namespace ardronepp{
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------
-	std::string UdpSocket::receive(){
+	int UdpSocket::receive(char *_buffer, const unsigned _size){
 		assert(mSocket != INVALID_SOCKET);
-
-		const unsigned MAX_BUFFER_SIZE = 4096;
-		char buffer[MAX_BUFFER_SIZE];
 
 		sockaddr_in addr;
 		socklen_t len = sizeof(addr);
-		int n = recvfrom(mSocket, buffer, MAX_BUFFER_SIZE, 0, (sockaddr*)&addr, &len);
-		
-		if (n < 1){
-			std::cout << "Socket error: " << WSAGetLastError();
-		}
-
-		std::string msg;
-		msg.append(buffer, n);
-
-		return msg;
+		return  recvfrom(mSocket, _buffer, _size, 0, (sockaddr*)&addr, &len);
 	}
 
 }	//	namespace ardronepp
