@@ -25,7 +25,7 @@ namespace ardronepp{
 
 		// AR.Drone 2.0
 		// Disable BOOTSTRAP mode
-		mArdroneController->send("AT*CONFIG=%d,\"general:navdata_demo\",\"TRUE\"\r");
+		mArdroneController->send("AT*CONFIG=%d,\"general:navdata_demo\",\"FALSE\"\r");
 		STime::get()->mDelay(100);
 
 		// Seed ACK
