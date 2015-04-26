@@ -11,9 +11,10 @@
 #ifndef ARDRONEPP_DRONE_NAVIGATION_TELEMETRY_H_
 #define ARDRONEPP_DRONE_NAVIGATION_TELEMETRY_H_
 
+#include "../Controller.h"
+#include "../../core/comm/UdpSocket.h"
 #include "NavigationData.h"
 #include "State.h"
-#include "../../core/comm/UdpSocket.h"
 
 #include <array>
 #include <mutex>
@@ -23,7 +24,7 @@
 namespace ardronepp{
 	class Telemetry{
 	public:		// Public interface
-		Telemetry(UdpSocket *_controlSocket);
+		Telemetry(Controller *_controller);
 		~Telemetry();
 
 		std::array<std::array<float, 3>, 3>		orientation();
@@ -37,7 +38,7 @@ namespace ardronepp{
 		void update();
 
 	private:	// Private members
-		UdpSocket					*mControlSocket;
+		Controller					*mArdroneController;
 		UdpSocket					mTelemetrySocket;
 		bool						mAcquire;
 		std::thread					*mAcquisitionThread;

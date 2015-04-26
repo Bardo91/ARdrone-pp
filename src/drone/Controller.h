@@ -17,7 +17,7 @@ namespace ardronepp{
 	class Controller{
 	public:
 		Controller();
-		UdpSocket *getSocket(){ return &mControlSocket; };
+		void send(std::string _msg);
 
 		void setGroundReference();
 

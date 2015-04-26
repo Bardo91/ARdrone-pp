@@ -18,18 +18,18 @@ using namespace ardronepp::navdata;
 namespace ardronepp{
 	//-----------------------------------------------------------------------------------------------------------------
 	// Public interface
-	Telemetry::Telemetry(UdpSocket *_controlSocket):	mTelemetrySocket("192.168.1.1",5554),
-														mControlSocket(_controlSocket),
-														mAcquire(true) {
+	Telemetry::Telemetry(Controller *_controller):	mTelemetrySocket("192.168.1.1",5554),
+													mArdroneController(_controller),
+													mAcquire(true) {
 		mTelemetrySocket.send("\x01\x00\x00\x00");
 
 		// AR.Drone 2.0
 		// Disable BOOTSTRAP mode
-		mControlSocket->send("AT*CONFIG=2,\"general:navdata_demo\",\"TRUE\"\r");
+		mArdroneController->send("AT*CONFIG=%d,\"general:navdata_demo\",\"TRUE\"\r");
 		STime::get()->mDelay(100);
 
 		// Seed ACK
-		mControlSocket->send("AT*CTRL=3,0\r");
+		mArdroneController->send("AT*CTRL=%d,0\r");
 		
 		mAcquisitionThread = new thread(&Telemetry::acquisitionCallback, this);
 		

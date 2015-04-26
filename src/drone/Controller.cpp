@@ -14,7 +14,14 @@
 #include <sstream>
 
 namespace ardronepp{
-	Controller::Controller(): mControlSocket("192.168.1.1", 5556){	}
+	Controller::Controller() : mControlSocket("192.168.1.1", 5556), mCommandCounter(1){}
+
+	//---------------------------------------------------------------------------------------------------------------------
+	void Controller::send(std::string _msg){
+		std::stringstream ATstream;
+		ATstream << _msg.substr(0, _msg.find("%d")) << mCommandCounter++ << _msg.substr(_msg.find("%d") + 2, _msg.size());
+		mControlSocket.send(ATstream.str());
+	}
 
 	//---------------------------------------------------------------------------------------------------------------------
 	void Controller::setGroundReference(){
