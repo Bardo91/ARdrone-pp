@@ -73,7 +73,7 @@ namespace ardronepp{
 	void Telemetry::acquisitionCallback(){
 		while(mAcquire){
 			update();
-			STime::get()->mDelay(100);
+			STime::get()->mDelay(20);
 		}
 	}
 
