@@ -25,7 +25,7 @@ namespace ardronepp{
 
 		// AR.Drone 2.0
 		// Disable BOOTSTRAP mode
-		mArdroneController->send("AT*CONFIG=%d,\"general:navdata_demo\",\"FALSE\"\r");
+		mArdroneController->send("AT*CONFIG=%d,\"general:navdata_demo\",\"TRUE\"\r");
 		STime::get()->mDelay(100);
 
 		// Seed ACK
@@ -104,6 +104,9 @@ namespace ardronepp{
 
 				// Copy to NAVDATA structure
 				switch (tmp_tag) {
+				case NAVDATA_TAG::DEMO_TAG:
+					memcpy((void*)&(mBasicData), (const void*)(buffer + index), tmp_size < sizeof(mBasicData) ? tmp_size : sizeof(mBasicData));
+					break;
 				case NAVDATA_TAG::TIME_TAG:
 					memcpy((void*)&(mTimeStamp), (const void*)(buffer + index), tmp_size < sizeof(mTimeStamp) ? tmp_size : sizeof(mTimeStamp));
 					break;

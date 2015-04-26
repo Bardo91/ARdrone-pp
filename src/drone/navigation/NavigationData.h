@@ -11,6 +11,7 @@
 #ifndef ARDRONEPP_DRONE_NAVIGATION_NAVIGATION_DATA_H_
 #define ARDRONEPP_DRONE_NAVIGATION_NAVIGATION_DATA_H_
 
+#include <cstdint>
 
 namespace ardronepp{
 	namespace navdata{
@@ -33,17 +34,42 @@ namespace ardronepp{
 			CKS_TAG = 0xFFFF
 		};
 
-
 		struct EulerMat {
 			float m11, m12, m13;
 			float m21, m22, m23;
 			float m31, m32, m33;
 		};
 
-		struct Position{
-			float x;
-			float y;
-			float z;
+		struct Point3 {
+			float x, y, z;
+		};
+
+		struct DemoData {
+			std::uint32_t	controlState;		/*!< Flying state (landed, flying, hovering, etc.) defined in CTRL_STATES enum. */
+			std::uint32_t	batLevel;			/*!< battery voltage filtered (mV) */
+
+			float			theta;				/*!< UAV's pitch in milli-degrees */
+			float			phi;				/*!< UAV's roll  in milli-degrees */
+			float			psi;				/*!< UAV's yaw   in milli-degrees */
+
+			std::int32_t	altitude;			/*!< UAV's altitude in centimeters */
+
+			float			vx;					/*!< UAV's estimated linear velocity */
+			float			vy;					/*!< UAV's estimated linear velocity */
+			float			vz;					/*!< UAV's estimated linear velocity */
+
+			std::uint32_t	numFrames;			/*!< streamed frame index */ // Not used -> To integrate in video stage.
+
+			// Camera parameters compute by detection
+			EulerMat		rotByCamera;		/*!<  Deprecated ! Don't use ! */
+			Point3			tranByCamera;		/*!<  Deprecated ! Don't use ! */
+			std::uint32_t	detectedTagIndex;	/*!<  Deprecated ! Don't use ! */
+
+			std::uint32_t	tagType;			/*!<  Type of tag searched in detection */
+
+			// Camera parameters compute by drone
+			EulerMat		drone_camera_rot;	/*!<  Deprecated ! Don't use ! */
+			Point3			drone_camera_trans;	/*!<  Deprecated ! Don't use ! */
 		};
 
 		struct Altitude{
@@ -107,9 +133,9 @@ namespace ardronepp{
 			short			mx;
 			short			my;
 			short			mz;
-			Position		magneto_raw;             // magneto in the body frame, in mG
-			Position		magneto_rectified;
-			Position		magneto_offset;
+			Point3			magneto_raw;             // magneto in the body frame, in mG
+			Point3			magneto_rectified;
+			Point3			magneto_offset;
 			float			heading_unwrapped;
 			float			heading_gyro_unwrapped;
 			float			heading_fusion_unwrapped;

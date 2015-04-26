@@ -49,10 +49,11 @@ namespace ardronepp{
 		State						mState;
 		unsigned int				mSequenceNumber;
 
+		navdata::DemoData			mBasicData;
 
 		navdata::TimeStamp			mTimeStamp;
 		navdata::EulerMat			mOrientation;
-		navdata::Position			mPosition;
+		navdata::Point3				mPosition;
 		navdata::Altitude			mAltitude;
 		navdata::Speeds				mSpeeds;
 
