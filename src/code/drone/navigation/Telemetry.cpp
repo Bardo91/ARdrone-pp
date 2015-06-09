@@ -11,6 +11,7 @@
 #include "Telemetry.h"
 
 #include "../../core/time/TimeTools.h"
+#include <cstring>
 
 using namespace std;
 using namespace ardronepp::navdata;
