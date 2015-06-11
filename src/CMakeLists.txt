@@ -28,6 +28,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 
-add_library(ARdronepp SHARED ${ARDRONE_PP_SOURCE_FILES})
+add_library(ARdronepp STATIC ${ARDRONE_PP_SOURCE_FILES})
 
 target_include_directories(ARdronepp PUBLIC ${PROJECT_SOURCE_DIR}/code)
